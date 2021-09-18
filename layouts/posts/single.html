@@ -1,0 +1,32 @@
+{{ define "main" }}
+  <div>
+    <div class="page-title">{{ .Params.title }}</div>
+    <div>{{ .Params.date.Format "January 2, 2006" }}</div>
+  </div>
+  
+  <div>
+    <div>
+      {{ range (.GetTerms "meetings") }}
+        <a href="{{ .Permalink }}">{{ .LinkTitle }}</a>
+      {{ end }}
+    </div>
+    <div>
+      {{ range (.GetTerms "groups") }}
+        <a href="{{ .Permalink }}">{{ .LinkTitle }}</a>
+      {{ end }}
+    </div>
+  </div>
+
+  <ul>
+  </ul>
+
+  {{ with (index $.Site.Data .Params.tweet_id) }}
+    <div>
+      {{ range .}}
+        <div class="tweet">
+          <a href="{{ .link }}" target="_blank">{{ .tweet | safeHTML }}</a>
+        </div>
+      {{ end }}
+    </div>
+  {{ end }}
+{{end }}
