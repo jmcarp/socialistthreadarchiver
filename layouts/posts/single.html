@@ -1,0 +1,55 @@
+{{ define "main" }}
+  <div class="page-title">{{ .Params.title }}, {{ .Params.date.Format "January 2, 2006" }}</div>
+
+  <div class="tags">
+    <div>
+      Meeting:
+      {{ range (.GetTerms "meetings") }}
+        <a href="{{ .Permalink }}">{{ .LinkTitle }}</a>
+      {{ end }}
+    </div>
+    <div>
+      Group(s):
+      {{ range (.GetTerms "groups") }}
+        <a href="{{ .Permalink }}">{{ .LinkTitle }}</a>
+      {{ end }}
+    </div>
+  </div>
+
+  <div class="links">
+    {{ if .Params.agenda }}
+      <a href="{{ .Params.agenda }}" target="_blank">
+        <i class="fa fa-file-alt"></i>
+        Agenda
+      </a>
+    {{ end }}
+    {{ if .Params.packet }}
+      <a href="{{ .Params.packet }}" target="_blank">
+        <i class="fa fa-file-alt"></i>
+        Packet
+      </a>
+    {{ end }}
+    {{ if .Params.minutes }}
+      <a href="{{ .Params.minutes }}" target="_blank">
+        <i class="fa fa-file-alt"></i>
+        Minutes
+      </a>
+    {{ end }}
+    {{ if .Params.recording }}
+      <a href="{{ .Params.recording }}" target="_blank">
+        <i class="fa fa-file-video"></i>
+        Recording
+      </a>
+    {{ end }}
+  </div>
+
+  {{ with (index $.Site.Data .Params.tweet_id) }}
+    <div>
+      {{ range .}}
+        <div class="tweet">
+          <a href="{{ .link }}" target="_blank">{{ .tweet | safeHTML }}</a>
+        </div>
+      {{ end }}
+    </div>
+  {{ end }}
+{{end }}
