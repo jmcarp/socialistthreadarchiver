@@ -1,3 +1,19 @@
+.page-title {
+  font-size: 1.25em;
+}
+
+.tags, .links {
+  margin: 15px;
+}
+
+.tweet {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  border: solid #a0a0a0 2px;
+  border-radius: 5px;
+  padding: 5px;
+}
+
 .content .tweet a {
   text-decoration: none;
   color: inherit;
@@ -5,6 +21,21 @@
 
 .content .tweet a:hover {
   background-color: #f0f0f0;
+}
+
+.tweet-timestamp {
+  font-size: 0.8em;
+}
+
+.tweet-image-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 1em;
+}
+
+.tweet-images img {
+  width: 100%;
+  height: 100%;
 }
 
 /* pagination.html: https://github.com/gohugoio/hugo/blob/master/tpl/tplimpl/template_embedded.go#L117 */
@@ -37,16 +68,4 @@
 
 .pagination {
   overflow: visible;
-}
-
-.page-title {
-  font-size: 1.25em;
-}
-
-.tags, .links {
-  margin: 15px;
-}
-
-.tweet {
-  margin: 5px;
 }
